@@ -10,6 +10,33 @@
 const colorPalette = document.querySelector('.color-palette');
 const output = document.querySelector('.output > span');
 
-function getRangomColor() {
-  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+createPalette(100);
+
+colorPalette.addEventListener('click', onPaletteClick);
+
+function onPaletteClick(event) {
+  const { color } = event.target.dataset;
+  if (color) {
+    output.textContent = color;
+    output.style.color = color;
+  }
+}
+
+function createPalette(numberOfItems) {
+  const items = [];
+  for (let i = 0; i < numberOfItems; i += 1) {
+    const color = getRandomHexColor();
+    const item = document.createElement('button');
+    item.classList.add('item');
+    item.dataset.color = color;
+    item.style.backgroundColor = color;
+    items.push(item);
+  }
+  colorPalette.append(...items);
+}
+
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
 }
