@@ -1,6 +1,8 @@
-#junk
-
+#Junk
 .DS_Store
+.vscode/
+.idea/
+
 # Logs
 logs
 *.log
@@ -76,7 +78,7 @@ typings/
 .env.test
 
 # parcel-bundler cache (https://parceljs.org/)
-.cache
+.parcel-cache
 
 # Next.js build output
 .next
