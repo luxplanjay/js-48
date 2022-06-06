@@ -46,3 +46,8 @@ body {
 .primary-banner .cta-btn:focus-visible {
   background-color: #f00;
 }
+
+.swiper {
+  width: 600px;
+  height: 300px;
+}
