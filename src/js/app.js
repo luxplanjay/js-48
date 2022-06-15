@@ -1,37 +1,30 @@
-const LOCALSTORAGE_KEY = 'is-sidebar-open';
+import {
+  differenceInYears,
+  differenceInDays,
+  formatDistance,
+  format,
+} from 'date-fns';
+import { uk } from 'date-fns/locale';
 
-const sidebar = document.querySelector('.sidebar');
+const getAge = dateOfBirth => {
+  const today = new Date();
+  return differenceInYears(today, dateOfBirth);
+};
 
-const persistedSidebarState = localStorage.getItem(LOCALSTORAGE_KEY);
-if (persistedSidebarState) {
-  const shouldOpenSidebar = JSON.parse(persistedSidebarState);
-  if (shouldOpenSidebar) {
-    openSidebar();
-  }
-}
+// console.log(getAge(new Date('1990-09-01')));
 
-document
-  .querySelector('button[data-open-sidebar]')
-  .addEventListener('click', () => {
-    openSidebar();
-    saveSidebarStateToLS(true);
-  });
+const getDeadlineInDays = deadlineDate => {
+  const today = new Date();
+  return differenceInDays(deadlineDate, today);
+};
 
-document
-  .querySelector('button[data-close-sidebar]')
-  .addEventListener('click', () => {
-    closeSidebar();
-    saveSidebarStateToLS(false);
-  });
+// console.log(getDeadlineInDays(new Date('2022-06-17')));
 
-function openSidebar() {
-  sidebar.classList.add('is-open');
-}
+// console.log(
+//   formatDistance(new Date(), new Date('2022-06-13T20:50:40'), {
+//     includeSeconds: true,
+//     locale: uk,
+//   })
+// );
 
-function closeSidebar() {
-  sidebar.classList.remove('is-open');
-}
-
-function saveSidebarStateToLS(state) {
-  localStorage.setItem(LOCALSTORAGE_KEY, state);
-}
+console.log(format(new Date(), 'dd MMMM yyyy, HH:mm'));
