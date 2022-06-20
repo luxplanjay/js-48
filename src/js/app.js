@@ -1,30 +1,21 @@
-import {
-  differenceInYears,
-  differenceInDays,
-  formatDistance,
-  format,
-} from 'date-fns';
-import { uk } from 'date-fns/locale';
+import 'modern-normalize';
+import { fetchUser } from './fetchUser';
+import { buildProfileMarkup } from './buildProfileMarkup';
+import { buildErrorScreen } from './buildErrorScreen';
 
-const getAge = dateOfBirth => {
-  const today = new Date();
-  return differenceInYears(today, dateOfBirth);
-};
+const form = document.querySelector('.searchbox');
+const profileContainer = document.querySelector('.profile-container');
 
-// console.log(getAge(new Date('1990-09-01')));
+form.addEventListener('submit', event => {
+  event.preventDefault();
 
-const getDeadlineInDays = deadlineDate => {
-  const today = new Date();
-  return differenceInDays(deadlineDate, today);
-};
+  fetchUser(form.elements.username.value)
+    .then(user => {
+      profileContainer.innerHTML = buildProfileMarkup(user);
+    })
+    .catch(() => {
+      profileContainer.innerHTML = buildErrorScreen();
+    });
 
-// console.log(getDeadlineInDays(new Date('2022-06-17')));
-
-// console.log(
-//   formatDistance(new Date(), new Date('2022-06-13T20:50:40'), {
-//     includeSeconds: true,
-//     locale: uk,
-//   })
-// );
-
-console.log(format(new Date(), 'dd MMMM yyyy, HH:mm'));
+  form.reset();
+});
