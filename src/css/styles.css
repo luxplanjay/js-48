@@ -15,8 +15,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: calc(var(--spacing) * 6);
-  padding: calc(var(--spacing) * 3);
+  gap: calc(var(--spacing) * 3);
+  padding: calc(var(--spacing) * 2);
 }
 
 .searchbox {
@@ -37,46 +37,22 @@ body {
   font: inherit;
 }
 
-.profile {
-  display: flex;
-  gap: calc(var(--spacing) * 3);
-  max-width: 640px;
-  padding: calc(var(--spacing) * 3);
-  background-color: var(--accent);
-  border-radius: 8px;
-  color: var(--common-white);
-  box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px,
-    rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px;
-}
-
-.avatar {
-  border-radius: 50%;
-}
-
-.name {
-  margin: 0;
-  font-weight: 500;
-}
-
-.bio {
-  margin-bottom: 0;
-}
-
-.stats {
-  display: flex;
-  justify-content: space-between;
+.movies {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: calc(var(--spacing) * 2);
-  margin-bottom: 0;
-  padding: 0;
-  list-style: none;
 }
 
-.stats li {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.movies img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
-.error-screen {
-  font-size: 40px;
+.load-more {
+  display: none;
+}
+
+.load-more.is-visible {
+  display: inline-block;
 }
