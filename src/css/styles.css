@@ -6,53 +6,8 @@
 }
 
 body {
+  padding: 0 calc(var(--spacing) * 2);
   background-color: var(--common-white);
   color: var(--common-black);
   line-height: 1.5;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: calc(var(--spacing) * 3);
-  padding: calc(var(--spacing) * 2);
-}
-
-.searchbox {
-  display: flex;
-  gap: var(--spacing);
-}
-
-.searchbox > button {
-  padding: var(--spacing) calc(var(--spacing) * 2);
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-.searchbox > input {
-  min-width: 240px;
-  max-width: 320px;
-  padding: var(--spacing);
-  font: inherit;
-}
-
-.movies {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: calc(var(--spacing) * 2);
-}
-
-.movies img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-.load-more {
-  display: none;
-}
-
-.load-more.is-visible {
-  display: inline-block;
 }
